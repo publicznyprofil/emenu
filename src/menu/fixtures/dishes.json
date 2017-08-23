@@ -1,0 +1,114 @@
+[
+  {
+    "model": "menu.dish",
+    "pk": 1,
+    "fields": {
+      "menu": 1,
+      "name": "Pizza 1",
+      "description": "Opis pizzy wegetaria\u0144skiej.",
+      "price": "18.50",
+      "preparation_time": "00:21:00",
+      "is_vegetarian": true,
+      "created": "2017-08-22T16:59:28.640Z",
+      "modified": "2017-08-22T16:59:28.640Z"
+    }
+  },
+  {
+    "model": "menu.dish",
+    "pk": 2,
+    "fields": {
+      "menu": 1,
+      "name": "Pizza 2",
+      "description": "Opis 2.",
+      "price": "20.00",
+      "preparation_time": "00:20:00",
+      "is_vegetarian": true,
+      "created": "2017-08-22T16:59:54.242Z",
+      "modified": "2017-08-22T16:59:54.242Z"
+    }
+  },
+  {
+    "model": "menu.dish",
+    "pk": 3,
+    "fields": {
+      "menu": 1,
+      "name": "Burger 1",
+      "description": "Opis burgera.",
+      "price": "15.00",
+      "preparation_time": "00:19:00",
+      "is_vegetarian": true,
+      "created": "2017-08-22T17:00:20.597Z",
+      "modified": "2017-08-22T17:00:20.598Z"
+    }
+  },
+  {
+    "model": "menu.dish",
+    "pk": 4,
+    "fields": {
+      "menu": 2,
+      "name": "Danie zwyk\u0142e 1.",
+      "description": "Opis zwyk\u0142y 1.",
+      "price": "15.00",
+      "preparation_time": "00:21:00",
+      "is_vegetarian": false,
+      "created": "2017-08-22T17:01:48.869Z",
+      "modified": "2017-08-22T17:01:48.869Z"
+    }
+  },
+  {
+    "model": "menu.dish",
+    "pk": 5,
+    "fields": {
+      "menu": 2,
+      "name": "Danie wegetaria\u0144skie",
+      "description": "Opis.",
+      "price": "13.00",
+      "preparation_time": "00:21:00",
+      "is_vegetarian": true,
+      "created": "2017-08-22T17:02:13.942Z",
+      "modified": "2017-08-22T17:02:13.942Z"
+    }
+  },
+  {
+    "model": "menu.dish",
+    "pk": 6,
+    "fields": {
+      "menu": 3,
+      "name": "Burger 2.",
+      "description": "Opis burgera.",
+      "price": "18.00",
+      "preparation_time": "00:13:00",
+      "is_vegetarian": false,
+      "created": "2017-08-22T17:03:08.265Z",
+      "modified": "2017-08-22T17:03:08.265Z"
+    }
+  },
+  {
+    "model": "menu.dish",
+    "pk": 7,
+    "fields": {
+      "menu": 3,
+      "name": "Pizza 3",
+      "description": "Mi\u0119sna pizza.",
+      "price": "22.00",
+      "preparation_time": "00:26:00",
+      "is_vegetarian": false,
+      "created": "2017-08-22T17:03:41.609Z",
+      "modified": "2017-08-22T17:03:41.609Z"
+    }
+  },
+  {
+    "model": "menu.dish",
+    "pk": 8,
+    "fields": {
+      "menu": 3,
+      "name": "Go\u0142\u0105bki.",
+      "description": "Opis go\u0142\u0105bk\u00f3w.",
+      "price": "16.00",
+      "preparation_time": "00:21:00",
+      "is_vegetarian": false,
+      "created": "2017-08-22T17:10:12.162Z",
+      "modified": "2017-08-22T17:10:12.162Z"
+    }
+  }
+]

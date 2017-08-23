@@ -1,0 +1,32 @@
+[
+  {
+    "model": "menu.menu",
+    "pk": 1,
+    "fields": {
+      "name": "Menu Wegetaria\u0144skie",
+      "description": "Zawiera tylko wegetaria\u0144skie dania.",
+      "created": "2017-08-22T16:55:38.489Z",
+      "modified": "2017-08-22T16:55:38.489Z"
+    }
+  },
+  {
+    "model": "menu.menu",
+    "pk": 2,
+    "fields": {
+      "name": "Menu Zwyk\u0142e",
+      "description": "Menu zawiera zar\u00f3wno dania wegetaria\u0144skie jak i mi\u0119sne.",
+      "created": "2017-08-22T17:00:48.135Z",
+      "modified": "2017-08-22T17:00:48.135Z"
+    }
+  },
+  {
+    "model": "menu.menu",
+    "pk": 3,
+    "fields": {
+      "name": "Menu Mi\u0119sne.",
+      "description": "Zawiera tylko dania mi\u0119sne.",
+      "created": "2017-08-22T17:02:36.804Z",
+      "modified": "2017-08-22T17:02:36.804Z"
+    }
+  }
+]

@@ -1,0 +1,134 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div id="app">
+        <router-view class="view" :menus="menus"></router-view>
+    </div>
+    <template id="menu-listing-template">
+        <div>
+            <v-paginator ref="vpaginator" :options="options" :resource_url="resource_url" @update="updateMenus"></v-paginator>
+            <table>
+                <thead>
+                    <tr>
+                        <th><a v-on:click="sort('name')" href="#">Nazwa menu</a></th>
+                        <th><a v-on:click="sort('dish_number')" href="#">Liczba dań</a></th>
+                        <th>Opis dania</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="menu in menus">
+                        <td>
+                            <router-link :to="{name: 'dishes', params: {id: menu.id}}">[ menu.name ]</router-link>
+                        </td>
+                        <td>[ menu.dish_number ]</td>
+                        <td>[ menu.description ]</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </template>
+
+    <template id="dishes-listing-template">
+        <div>
+            <router-link to="/">Lista menu</router-link>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nazwa dania</th>
+                        <th>Opis</th>
+                        <th>Cena</th>
+                        <th>Czas przygotowania</th>
+                        <th>Czy danie jest wegetariańskie?</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="dish in dishes">
+                        <td>[ dish.name ]</td>
+                        <td>[ dish.description ]</td>
+                        <td>[ dish.price ]</td>
+                        <td>[ dish.preparation_time ]</td>
+                        <td>[ dish.is_vegetarian ? 'Tak' : 'Nie']</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </template>
+
+    <script>
+        var MenusListing = {
+            components: {
+                VPaginator: VuePaginator
+            },
+            name: 'MenusListing',
+            template: '#menu-listing-template',
+            props: ['menus'],
+            delimiters: ["[", "]"],
+            methods: {
+                updateMenus: function (data) {
+                    this.menus = data;
+                },
+                sort: function (column) {
+                    var self = this;
+                    self.sort_dir = self.sort_dir === 'desc' ? 'asc' : 'desc';
+                    var url = '{% url 'api_menu_list' %}';
+                    this.$http.get(url, {params: {sort: column, dir: self.sort_dir}}).then(function (response) {
+                        self.$refs.vpaginator.makePagination(response.data);
+                        self.menus = response.data['results'];
+                    });
+                }
+            },
+            data: function () {
+                return {
+                    resource_url: '{% url 'api_menu_list' %}',
+                    options: {
+                        remote_data: 'results',
+                        remote_current_page: 'current_page',
+                        remote_last_page: 'last_page',
+                        remote_next_page_url: 'next',
+                        remote_prev_page_url: 'previous',
+                        next_button_text: 'Następna',
+                        previous_button_text: 'Poprzednia'
+                    },
+                    sort_dir: 'desc'
+                }
+            }
+        };
+
+        var DishesListing = {
+            name: 'DishesListing',
+            template: '#dishes-listing-template',
+            props: ['dishes'],
+            delimiters: ["[", "]"],
+            methods: {
+                fetchDishes: function () {
+                    var self = this;
+                    var id = this.$route.params.id;
+                    var url = '{% url 'api_dish_list' %}';
+                    this.$http.get(url, {params: {id: id}}).then(function (response) {
+                        self.dishes = response.data;
+                    });
+                }
+            },
+            created: function () {
+                this.fetchDishes();
+            }
+        };
+
+        var router = new VueRouter({
+            mode: 'hash',
+            routes: [
+                {path: '/', component: MenusListing},
+                {name: 'dishes', path: '/:id', component: DishesListing}
+            ]
+        });
+
+        var app = new Vue({
+            el: '#app',
+            router: router,
+            data: {
+                dishes: [],
+                menus: []
+            }
+        });
+    </script>
+{% endblock content %}
